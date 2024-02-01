@@ -11,7 +11,7 @@ function Square({ metaType, squareType, styleCt, onSquareClicked }) {
   );
 }
 
-function Player({ ePressed, size, playerPixels, styles }) {
+function Player({ spacePressed, size, playerPixels, styles }) {
   return (
     <>
       {playerPixels.map((e, i) => {
@@ -19,7 +19,7 @@ function Player({ ePressed, size, playerPixels, styles }) {
           <div key={-size*size-i} className="board-row">
             {playerPixels[i].map((e2, i2) => {
               return (
-                <Square key={size*size + i*size+i2} metaType="player" squareType={playerPixels[i][i2]} styleCt={styles[i][i2] + "" + ((playerPixels[i][i2] === 10 || playerPixels[i][i2] === 11) ? (ePressed ? 1 : 0) : "")} />
+                <Square key={size*size + i*size+i2} metaType="player" squareType={playerPixels[i][i2]} styleCt={styles[i][i2] + "" + ((playerPixels[i][i2] === 10 || playerPixels[i][i2] === 11) ? (spacePressed ? 1 : 0) : "")} />
               )
             })}
           </div>
@@ -64,12 +64,12 @@ export default function Game() {
   const [currentSquares, setCurrentSquares] = useState(currentLevel.slice(currentLevelViewportRow, currentLevelViewportRow + numberOfRows).map((e,i) => e.slice(currentLevelViewportCol, currentLevelViewportCol + numberOfColumns)));
   const [currentLevelStyleMods, setCurrentLevelStyleMods] = useState(currentLevel.map((arr, i) => arr.slice().map((e,i2) => (Math.random() > .85) ? 2 : 1)));
   const [currentStyleMods, setCurrentStyleMods] = useState(currentLevelStyleMods.slice(currentLevelViewportRow, currentLevelViewportRow + numberOfRows).map((e, i) => e.slice(currentLevelViewportCol, currentLevelViewportCol + numberOfColumns)));
-  const [currentPlayerPixelMap, setCurrentPlayerPixelMap] = useState([[-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1],[-1,11,8,-1,-1,11,8,7,9,-1,10,9,7,8,-1,-1,-1,9,10,-1],[-1,-1,2,10,-1,-1,2,6,4,10,-1,4,6,2,11,-1,11,4,-1,-1],[-1,0,3,-1,-1,-1,3,-1,0,-1,-1,0,-1,3,-1,-1,-1,5,0,-1],[-1,-1,-1,0,-1,-1,0,-1,-1,-1,-1,-1,-1,0,-1,-1,0,-1,-1,-1],[-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1],[-1,-1,8,-1,-1,-1,8,7,9,-1,-1,9,7,8,-1,-1,-1,9,-1,-1],[-1,11,2,-1,-1,11,2,6,4,10,10,4,6,2,11,-1,-1,4,10,-1],[-1,-1,3,-1,-1,-1,3,-1,5,-1,-1,5,-1,3,-1,-1,-1,5,-1,-1],[-1,-1,0,-1,-1,-1,0,-1,0,-1,-1,0,-1,0,-1,-1,-1,0,-1,-1],[-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1],[-1,10,8,-1,-1,-1,8,7,9,10,-1,9,7,8,11,-1,-1,9,11,-1],[-1,-1,2,11,-1,11,2,6,4,-1,10,4,6,2,-1,-1,10,4,-1,-1],[-1,0,3,-1,-1,-1,0,-1,5,-1,-1,5,-1,0,-1,-1,-1,5,0,-1],[-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1],[-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1],[-1,-1,8,-1,-1,-1,8,7,9,-1,-1,9,7,8,-1,-1,-1,9,-1,-1],[-1,11,2,-1,-1,11,2,6,4,10,10,4,6,2,11,-1,-1,4,10,-1],[-1,-1,3,-1,-1,-1,3,-1,5,-1,-1,5,-1,3,-1,-1,-1,5,-1,-1],[-1,-1,0,-1,-1,-1,0,-1,0,-1,-1,0,-1,0,-1,-1,-1,0,-1,-1]]);
+  const [currentPlayerPixelMap, setCurrentPlayerPixelMap] = useState([[-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1],[-1,11,8,-1,-1,11,8,7,9,-1,10,9,7,8,-1,-1,-1,9,10,-1],[-1,-1,6,10,-1,-1,-1,6,-1,10,-1,-1,6,-1,11,-1,11,6,-1,-1],[-1,0,3,-1,-1,-1,3,-1,0,-1,-1,0,-1,3,-1,-1,-1,5,0,-1],[-1,-1,-1,0,-1,-1,0,-1,-1,-1,-1,-1,-1,0,-1,-1,0,-1,-1,-1],[-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1],[-1,-1,8,-1,-1,-1,8,7,9,-1,-1,9,7,8,-1,-1,-1,9,-1,-1],[-1,11,6,-1,-1,11,-1,6,-1,10,10,-1,6,-1,11,-1,-1,6,10,-1],[-1,-1,3,-1,-1,-1,3,-1,5,-1,-1,5,-1,3,-1,-1,-1,5,-1,-1],[-1,-1,0,-1,-1,-1,0,-1,0,-1,-1,0,-1,0,-1,-1,-1,0,-1,-1],[-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1],[-1,10,8,-1,-1,-1,8,7,9,10,-1,9,7,8,11,-1,-1,9,11,-1],[-1,-1,6,11,-1,11,-1,6,-1,-1,10,-1,6,-1,-1,-1,10,6,-1,-1],[-1,0,3,-1,-1,-1,0,-1,5,-1,-1,5,-1,0,-1,-1,-1,5,0,-1],[-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1],[-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1],[-1,-1,8,-1,-1,-1,8,7,9,-1,-1,9,7,8,-1,-1,-1,9,-1,-1],[-1,11,6,-1,-1,11,-1,6,-1,10,10,-1,6,-1,11,-1,-1,6,10,-1],[-1,-1,3,-1,-1,-1,3,-1,5,-1,-1,5,-1,3,-1,-1,-1,5,-1,-1],[-1,-1,0,-1,-1,-1,0,-1,0,-1,-1,0,-1,0,-1,-1,-1,0,-1,-1]]);
   const [currentPlayerPixelStateRow, setCurrentPlayerPixelStateRow] = useState(2);
   const [currentPlayerPixelStateCol, setCurrentPlayerPixelStateCol] = useState(1);
   const [currentPlayerPixels, setCurrentPlayerPixels] = useState(currentSquares.map((r, i) => r.map((c, i2) => (i < 10 ? -1 : (i > 14 ? -1 : (i2 < 10 ? -1 : (i2 > 14 ? -1 : currentPlayerPixelMap[i - 5 + ((currentPlayerPixelStateRow - 1) * 5)][i2 - 5 + ((currentPlayerPixelStateCol - 1) * 5)])))))));
   const [currentFacing, setCurrentFacing] = useState(0);
-  const [ePressed, setEPressed] = useState(false);
+  const [spacePressed, setSpacePressed] = useState(false);
   const [hasWon, setHasWon] = useState(false);
   const [playLabel, setPlayLabel] = useState("Edit");
   const [rulesShowing, setRulesShowing] = useState(false);
@@ -100,6 +100,7 @@ export default function Game() {
         } else if (event.code === 'ArrowUp') {
         } else if (event.code === 'ArrowDown') {
         } else if (event.code === 'Space') {
+          event.preventDefault();
           handleControlSpaceClick();
         } else if (c === 'E') {
           handleControlEClick();
@@ -218,6 +219,10 @@ export default function Game() {
   }
 
   function handleControlEClick() {
+    
+  }
+
+  function handleControlSpaceClick() {
     let posRow = currentLevelViewportRow + 15;
     let posCol = currentLevelViewportCol + 12
 
@@ -244,16 +249,12 @@ export default function Game() {
       setCurrentLevel(nextCurrentLevel);
     }
     
-    setEPressed(true);
+    setSpacePressed(true);
     setCurrentPlayerPixels(currentPlayerPixels);
     setTimeout(() => {
-      setEPressed(false);
+      setSpacePressed(false);
       setCurrentPlayerPixels(currentPlayerPixels);
     }, 100);
-  }
-
-  function handleControlSpaceClick() {
-
   }
 
   return (
@@ -276,7 +277,7 @@ export default function Game() {
                 <Board isSetup={isSetup} numberOfRows={numberOfRows} numberOfColumns={numberOfColumns} squares={currentSquares} styles={currentStyleMods} onSelect={handleSelect} />
               </div>
               <div className="game-player">
-                <Player ePressed={ePressed} size={numberOfRows} playerPixels={currentPlayerPixels} styles={currentPlayerPixels}/>
+                <Player spacePressed={spacePressed} size={numberOfRows} playerPixels={currentPlayerPixels} styles={currentPlayerPixels}/>
               </div>
             </div>
             <div className={"App-footer" + (rulesShowing ? " blur" : "")}>

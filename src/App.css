@@ -420,48 +420,48 @@ ul {
 .player-22 {
   height: 100%;
   border-radius: 0;
-  background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(255, 0, 0) 70%);
+  background: transparent;
 }
 
 .player-33 {
   height: 100%;
-  border-radius: 0% 0% 50% 50%;
+  border-radius: 50%;
   background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(0, 87, 250) 70%);
 }
 
 .player-44 {
   height: 100%;
   border-radius: 0%;
-  background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(255, 0, 0) 70%);
+  background: transparent;
 }
 
 .player-55 {
   height: 100%;
-  border-radius: 0 0 50% 50%;
+  border-radius: 50%;
   background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(0, 87, 250) 70%);
 }
 
 .player-66 {
   height: 100%;
-  border-radius: 0 0 20% 20%;
+  border-radius: 0 0 50% 50%;
   background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(126, 0, 0) 70%);
 }
 
 .player-77 {
   height: 100%;
-  border-radius: 10% 10% 0% 0%;
+  border-radius: 0%;
   background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(126, 0, 0) 70%);
 }
 
 .player-88 {
   height: 100%;
-  border-radius: 50% 20% 0% 0%;
+  border-radius: 0%;
   background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(255, 0, 0) 70%);
 }
 
 .player-99 {
   height: 100%;
-  border-radius: 20% 50% 0% 0%;
+  border-radius: 0%;
   background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(255, 0, 0) 70%);
 }
 
