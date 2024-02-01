@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRef } from "react";
 import './App.css';
 
 function Square({ metaType, squareType, styleCt, onSquareClicked }) {
@@ -63,7 +64,7 @@ export default function Game() {
   const [currentSquares, setCurrentSquares] = useState(currentLevel.slice(currentLevelViewportRow, currentLevelViewportRow + numberOfRows).map((e,i) => e.slice(currentLevelViewportCol, currentLevelViewportCol + numberOfColumns)));
   const [currentLevelStyleMods, setCurrentLevelStyleMods] = useState(currentLevel.map((arr, i) => arr.slice().map((e,i2) => (Math.random() > .85) ? 2 : 1)));
   const [currentStyleMods, setCurrentStyleMods] = useState(currentLevelStyleMods.slice(currentLevelViewportRow, currentLevelViewportRow + numberOfRows).map((e, i) => e.slice(currentLevelViewportCol, currentLevelViewportCol + numberOfColumns)));
-  const [currentPlayerPixelMap, setCurrentPlayerPixelMap] = useState([[-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1],[-1,11,8,-1,-1,11,8,7,9,-1,10,8,7,9,-1,-1,-1,9,10,-1],[-1,-1,2,10,-1,-1,2,6,4,10,-1,2,6,4,11,-1,11,4,-1,-1],[-1,0,3,-1,-1,-1,0,-1,5,-1,-1,0,-1,5,-1,-1,-1,5,0,-1],[-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,0,-1,-1,-1],[-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1],[-1,-1,8,-1,-1,-1,8,7,9,-1,-1,8,7,9,-1,-1,-1,9,-1,-1],[-1,11,2,-1,-1,11,2,6,4,10,10,2,6,4,11,-1,-1,4,10,-1],[-1,-1,3,-1,-1,-1,3,-1,5,-1,-1,3,-1,5,-1,-1,-1,5,-1,-1],[-1,-1,0,-1,-1,-1,0,-1,0,-1,-1,0,-1,0,-1,-1,-1,0,-1,-1],[-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1],[-1,10,8,-1,-1,-1,8,7,9,10,-1,8,7,9,11,-1,-1,9,11,-1],[-1,-1,2,11,-1,11,2,6,4,-1,10,2,6,4,-1,-1,10,4,-1,-1],[-1,0,3,-1,-1,-1,3,-1,0,-1,-1,3,-1,0,-1,-1,-1,5,0,-1],[-1,-1,-1,0,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1],[-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1],[-1,-1,8,-1,-1,-1,8,7,9,-1,-1,8,7,9,-1,-1,-1,9,-1,-1],[-1,11,2,-1,-1,11,2,6,4,10,10,2,6,4,11,-1,-1,4,10,-1],[-1,-1,3,-1,-1,-1,3,-1,5,-1,-1,3,-1,5,-1,-1,-1,5,-1,-1],[-1,-1,0,-1,-1,-1,0,-1,0,-1,-1,0,-1,0,-1,-1,-1,0,-1,-1]]);
+  const [currentPlayerPixelMap, setCurrentPlayerPixelMap] = useState([[-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1],[-1,11,8,-1,-1,11,8,7,9,-1,10,9,7,8,-1,-1,-1,9,10,-1],[-1,-1,2,10,-1,-1,2,6,4,10,-1,4,6,2,11,-1,11,4,-1,-1],[-1,0,3,-1,-1,-1,3,-1,0,-1,-1,0,-1,3,-1,-1,-1,5,0,-1],[-1,-1,-1,0,-1,-1,0,-1,-1,-1,-1,-1,-1,0,-1,-1,0,-1,-1,-1],[-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1],[-1,-1,8,-1,-1,-1,8,7,9,-1,-1,9,7,8,-1,-1,-1,9,-1,-1],[-1,11,2,-1,-1,11,2,6,4,10,10,4,6,2,11,-1,-1,4,10,-1],[-1,-1,3,-1,-1,-1,3,-1,5,-1,-1,5,-1,3,-1,-1,-1,5,-1,-1],[-1,-1,0,-1,-1,-1,0,-1,0,-1,-1,0,-1,0,-1,-1,-1,0,-1,-1],[-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1],[-1,10,8,-1,-1,-1,8,7,9,10,-1,9,7,8,11,-1,-1,9,11,-1],[-1,-1,2,11,-1,11,2,6,4,-1,10,4,6,2,-1,-1,10,4,-1,-1],[-1,0,3,-1,-1,-1,0,-1,5,-1,-1,5,-1,0,-1,-1,-1,5,0,-1],[-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1],[-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1,-1,-1,0,-1,-1],[-1,-1,8,-1,-1,-1,8,7,9,-1,-1,9,7,8,-1,-1,-1,9,-1,-1],[-1,11,2,-1,-1,11,2,6,4,10,10,4,6,2,11,-1,-1,4,10,-1],[-1,-1,3,-1,-1,-1,3,-1,5,-1,-1,5,-1,3,-1,-1,-1,5,-1,-1],[-1,-1,0,-1,-1,-1,0,-1,0,-1,-1,0,-1,0,-1,-1,-1,0,-1,-1]]);
   const [currentPlayerPixelStateRow, setCurrentPlayerPixelStateRow] = useState(2);
   const [currentPlayerPixelStateCol, setCurrentPlayerPixelStateCol] = useState(1);
   const [currentPlayerPixels, setCurrentPlayerPixels] = useState(currentSquares.map((r, i) => r.map((c, i2) => (i < 10 ? -1 : (i > 14 ? -1 : (i2 < 10 ? -1 : (i2 > 14 ? -1 : currentPlayerPixelMap[i - 5 + ((currentPlayerPixelStateRow - 1) * 5)][i2 - 5 + ((currentPlayerPixelStateCol - 1) * 5)])))))));
@@ -217,7 +218,6 @@ export default function Game() {
   }
 
   function handleControlEClick() {
-    
     let posRow = currentLevelViewportRow + 15;
     let posCol = currentLevelViewportCol + 12
 
@@ -244,15 +244,12 @@ export default function Game() {
       setCurrentLevel(nextCurrentLevel);
     }
     
-    if (!ePressed) {
-
-      setEPressed(true);
+    setEPressed(true);
+    setCurrentPlayerPixels(currentPlayerPixels);
+    setTimeout(() => {
+      setEPressed(false);
       setCurrentPlayerPixels(currentPlayerPixels);
-      setTimeout(() => {
-        setEPressed(false);
-        setCurrentPlayerPixels(currentPlayerPixels);
-      }, 100);
-    }
+    }, 100);
   }
 
   function handleControlSpaceClick() {

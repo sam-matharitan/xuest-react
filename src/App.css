@@ -525,16 +525,16 @@ ul {
   background: linear-gradient(to right, rgb(0, 68, 255) 0%, #1f53ffdd 50%, rgb(110, 209, 255) 53%, rgb(0, 68, 255) 100%)
 }
 
-.textile-20 {
-  height: 100%;
-  border-radius: 0%;
-  background: #7a5606;
-}
-
 .textile-21 {
   height: 100%;
   border-radius: 0%;
-  background: radial-gradient(ellipse at 30% 35%, #7a5606 0%, #e2ad4a 10%, #7a5606 40%);
+  background: radial-gradient(ellipse at 50% 50%, #e2ad4a 0%, #7a5606 50%, #9add35 80%);
+}
+
+.textile-22 {
+  height: 100%;
+  border-radius: 0%;
+  background: radial-gradient(ellipse at 50% 50%, #7a5606 0%, #e2ad4a 50%, #9add35 80%);
 }
 
 .board-row {
