@@ -1,0 +1,705 @@
+div {
+  outline: none !important;
+}
+
+.blur {
+  filter: blur(4px);
+}
+
+.App {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  text-align: center;
+  width: 100%;
+  background-color: #333333;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+
+.App-inner {
+  max-width: 30em;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.App-content {
+  position: absolute;
+  background-color: #333333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  width: 100%;
+}
+
+.App-header-rules {
+  background: #333333aa;
+  z-index: 10;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  max-width: 30em;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-style: solid;
+  color: white;
+  box-shadow: 0px 60px 60px rgba(0,0,0,.8);
+}
+
+.App-header-rules-hidden {
+  display: none;
+}
+
+.toast-rules {
+  position: relative;
+  min-height: 70vh;
+  width: 100%;
+}
+
+.closeRules {
+  cursor: pointer;
+  font-weight: bolder;
+  position: fixed;
+  top: 0;
+  right: 0.25em;
+  font-family: Future;
+  font-size: 3em;
+  color: white;
+  z-index: 20;
+}
+
+.closeRules-hidden {
+  display: none;
+}
+
+.rules {
+  position: absolute;
+  background-color: #333333c4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-logo {
+  pointer-events: none;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .game-border.rotating {
+    animation: game-border-spin infinite 31s linear;
+  }
+
+  .dirt-border.rotating {
+    animation: game-border-spin infinite 31s linear;
+  }
+
+  .sq-1 {
+    animation: sq2-spin infinite .6s linear;
+    animation-direction: alternate-reverse;
+  }
+
+  .sq-2 {
+    animation: sq2-spin infinite .6s linear;
+    animation-direction: alternate;
+  }
+
+  .sq-1-rules {
+    animation: sq2-spin infinite .6s linear;
+    animation-direction: alternate-reverse;
+  }
+
+  .sq-2-rules {
+    animation: sq2-spin infinite .6s linear;
+    animation-direction: alternate;
+  }
+
+  .sq4 {
+    animation: shimmer 2s infinite linear;
+  }
+
+  .sq4-rules {
+    animation: shimmer 2s infinite linear;
+  }
+}
+
+.App-header {
+  background-color: #333333c4;
+  min-height: 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-top: 3%;
+  margin-bottom: -10%;
+  width: 100%;
+  z-index: 50;
+}
+
+.game {
+  background-color: #333333c4;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.ocean-border {
+  border-radius: 40% 20% 10% 80% / 30% 80% 20% 20%;
+  position: absolute;
+  width: 90%;
+  display: flex;
+  background: radial-gradient(ellipse at 35% 30%, #0cf 0%, #0033dddd 70%);
+  filter: blur(100px);
+  flex-direction: column;
+  aspect-ratio: 1 / 1;
+}
+
+.game-border {
+  position: relative;
+  width: 70%;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(ellipse at 35% 30%, white 0%, #58b1fa 90%);
+  border-radius: 40% 20% 1% 70% / 3% 80% 1% 50%;
+  box-shadow: 0px 60px 60px rgba(0,0,0,.8);
+}
+
+.dirt-border {
+  position: absolute;
+  width: 50%;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(40, 177, 219) 90%);
+  border-radius: 40% 20% 10% 80% / 30% 80% 20% 20%;
+  box-shadow: 0px 60px 60px rgba(0,0,0,.8);
+}
+
+.controls {
+  position: absolute;
+  width: 90%;
+  display: flex;
+  background: transparent;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+}
+
+.control-up {
+  border-radius: 100% 100% 35% 35% / 100%;
+  width: 8%;
+  background: radial-gradient(ellipse at 50% 30%, white 0%, #bbbd 90%);
+  filter: blur(5px);
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+}
+
+.control-down {
+  border-radius: 100% 100% 35% 35% / 100%;
+  width: 8%;
+  background: radial-gradient(ellipse at 50% 30%, white 0%, #bbbd 90%);
+  filter: blur(5px);
+  aspect-ratio: 1 / 1;
+  transform: rotate(180deg);
+  cursor: pointer;
+}
+
+.control-left {
+  border-radius: 100% 35% 35% 100% / 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 30% 50%, white 0%, #bbbd 90%);
+  filter: blur(5px);
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+}
+
+.control-right {
+  border-radius: 100% 35% 35% 100% / 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 30% 50%, white 0%, #bbbd 90%);
+  filter: blur(5px);
+  aspect-ratio: 1 / 1;
+  transform: rotate(180deg);
+  cursor: pointer;
+}
+
+.control-spacer {
+  width: 8%;
+  background-color: transparent;
+  aspect-ratio: 1 / 1;
+}
+
+.control-spacer-row {
+  height: 100%;
+  background-color: transparent;
+  aspect-ratio: 1 / 1;
+}
+
+.control-spacer-middle {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: transparent;
+  height: 7.7%;
+}
+
+.game-board {
+  position: absolute;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #0003;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 1 / 1;
+  box-shadow: 0px 10px 30px #fff8;
+}
+
+.game-player {
+  position: absolute;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #0003;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 1 / 1;
+}
+
+.App-footer {
+  background-color: #333333c4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.App-footer-copyright {
+  background-color: #333333c4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 100%;
+}
+
+.App-setting-label-copyright {
+  color: black;
+  font-size: 0.7em;
+}
+
+@keyframes game-border-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sq2-spin {
+  from {
+    transform: rotate(-5deg);
+  }
+  to {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 0%;
+  }
+  to {
+    background-position: 300%;
+  }
+}
+
+body {
+  background: #333333c4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  z-index: 1;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  background: radial-gradient(ellipse at center top, #88BB11 0%, #447711 65%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+h4 {
+  margin-top: 0;
+  font-size: 16px;
+}
+
+h5 {
+  margin-top: 0;
+  font-size: 14px;
+}
+
+h6 {
+  margin-top: 0;
+  font-size: 12px;
+}
+
+ul {
+  padding-inline-start: 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.grid-cell {
+  float: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.square {
+  aspect-ratio: 1 / 1;
+}
+
+.player--1-1 {
+  height: 100%;
+  border-radius: 0%;
+  background-color: transparent;
+  border-style: none;
+}
+
+.player-00 {
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(255, 208, 120) 70%);
+}
+
+.player-22 {
+  height: 100%;
+  border-radius: 0;
+  background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(255, 0, 0) 70%);
+}
+
+.player-33 {
+  height: 100%;
+  border-radius: 0% 0% 50% 50%;
+  background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(0, 87, 250) 70%);
+}
+
+.player-44 {
+  height: 100%;
+  border-radius: 0%;
+  background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(255, 0, 0) 70%);
+}
+
+.player-55 {
+  height: 100%;
+  border-radius: 0 0 50% 50%;
+  background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(0, 87, 250) 70%);
+}
+
+.player-66 {
+  height: 100%;
+  border-radius: 0 0 20% 20%;
+  background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(126, 0, 0) 70%);
+}
+
+.player-77 {
+  height: 100%;
+  border-radius: 10% 10% 0% 0%;
+  background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(126, 0, 0) 70%);
+}
+
+.player-88 {
+  height: 100%;
+  border-radius: 50% 20% 0% 0%;
+  background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(255, 0, 0) 70%);
+}
+
+.player-99 {
+  height: 100%;
+  border-radius: 20% 50% 0% 0%;
+  background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(255, 0, 0) 70%);
+}
+
+.player-10100 {
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(117, 72, 14) 70%);
+}
+
+.player-10101 {
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 35% 30%, white 0%, white 70%);
+}
+
+.player-11110 {
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(255, 208, 120) 70%);
+}
+
+.player-11111 {
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(255, 208, 120) 70%);
+}
+
+.textile--11 {
+  height: 100%;
+  border-radius: 0;
+  background: black;
+}
+
+.textile--12 {
+  height: 100%;
+  border-radius: 0;
+  background: #000a;
+}
+
+.textile-01 {
+  height: 100%;
+  border-radius: 0%;
+  background: #9add35;
+}
+
+.textile-02 {
+  height: 100%;
+  border-radius: 0%;
+  background: radial-gradient(ellipse at 30% 35%, #9add35 0%, #33ff8833 10%, #9add35 40%);
+}
+
+.textile-11 {
+  height: 100%;
+  border-radius: 0%;
+  background: rgb(0, 68, 255);
+}
+
+.textile-12 {
+  height: 100%;
+  border-radius: 0%;
+  background: linear-gradient(to right, rgb(0, 68, 255) 0%, #1f53ffdd 50%, rgb(110, 209, 255) 53%, rgb(0, 68, 255) 100%)
+}
+
+.textile-20 {
+  height: 100%;
+  border-radius: 0%;
+  background: #7a5606;
+}
+
+.textile-21 {
+  height: 100%;
+  border-radius: 0%;
+  background: radial-gradient(ellipse at 30% 35%, #7a5606 0%, #e2ad4a 10%, #7a5606 40%);
+}
+
+.board-row {
+  width: 100%;
+  display: flex;
+  flex: 1;
+}
+
+.board-row:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.app-title {
+  font-size: 3em;
+}
+
+.App-setting {
+  display: table;
+  flex: 1;
+}
+
+.App-settings {
+  margin-top: 2vh;
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  justify-content: right;
+  width: 100%;
+}
+
+.app-setting-title {
+  margin-top: 0.5em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  font-size: 3em;
+}
+
+.app-setting-subtitle {
+  color: black;
+  font-family: Future;
+  margin-top: 0.5em;
+  margin-left: 1em;
+  margin-right: 1em;
+  font-size: 2em;
+}
+
+.app-setting-desc {
+  color: #000;
+  font-family: Future;
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+}
+
+.App-settings-buttons {
+  margin-top: 10px;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: left;
+  text-align: center;
+  color: black;
+}
+
+.App-settings-dpad-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: .25em;
+}
+
+.App-settings-dpad-col {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+}
+
+.App-settings-actions-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: -.25em;
+}
+
+.App-settings-actions-col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  justify-content: right;
+}
+
+.App-settings-buttons .App-setting {
+  margin: 0.2em;
+}
+
+.App-setting-hidden {
+  display: none;
+}
+
+.app-setting-label {
+  font-family: Future;
+  font-size: 3vh;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.App-setting-button-control {
+  border-radius: 10%;
+  background: radial-gradient(ellipse at 35% 30%, white 0%, darkorange 70%);
+  box-shadow: 0px 5px 5px #000;
+  height: 2em;
+  margin-left: .5em;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  align-items: center;
+  vertical-align: middle;
+  line-height: 2em;
+}
+
+.App-setting-button-control-action {
+  border-radius: 10%;
+  background: radial-gradient(ellipse at 35% 30%, white 0%, rgb(0, 52, 223) 70%);
+  box-shadow: 0px 5px 5px #000;
+  height: 2em;
+  margin-right: .5em;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  align-items: center;
+  vertical-align: middle;
+  line-height: 2em;
+}
+
+.App-setting-button-control-empty {
+  background: transparent;
+  height: 2em;
+  aspect-ratio: 1 / 1;
+}
+
+.engraved {
+  font-family: Futura;
+  background-color: #000;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: #333333c4 5px 7px 1px;
+}
+
+.App-setting-button-label {
+  font-family: Futura;
+  background-color: #333;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: black;
+  cursor: pointer;
+}
+
+.rule-desc {
+  font-family: Future;
+}
