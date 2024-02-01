@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/xollect-react/static/css/main.3c30b09c.css",
-    "main.js": "/xollect-react/static/js/main.29a8d233.js",
-    "static/js/787.13883f6f.chunk.js": "/xollect-react/static/js/787.13883f6f.chunk.js",
-    "index.html": "/xollect-react/index.html",
-    "main.3c30b09c.css.map": "/xollect-react/static/css/main.3c30b09c.css.map",
-    "main.29a8d233.js.map": "/xollect-react/static/js/main.29a8d233.js.map",
-    "787.13883f6f.chunk.js.map": "/xollect-react/static/js/787.13883f6f.chunk.js.map"
+    "main.css": "/xuest-react/static/css/main.3c30b09c.css",
+    "main.js": "/xuest-react/static/js/main.8d8805e2.js",
+    "static/js/787.12f9fda6.chunk.js": "/xuest-react/static/js/787.12f9fda6.chunk.js",
+    "index.html": "/xuest-react/index.html",
+    "main.3c30b09c.css.map": "/xuest-react/static/css/main.3c30b09c.css.map",
+    "main.8d8805e2.js.map": "/xuest-react/static/js/main.8d8805e2.js.map",
+    "787.12f9fda6.chunk.js.map": "/xuest-react/static/js/787.12f9fda6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3c30b09c.css",
-    "static/js/main.29a8d233.js"
+    "static/js/main.8d8805e2.js"
   ]
 }
