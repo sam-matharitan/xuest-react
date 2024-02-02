@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/xuest-react/static/css/main.fb4a9ba3.css",
-    "main.js": "/xuest-react/static/js/main.7cd1d6c9.js",
+    "main.css": "/xuest-react/static/css/main.02829c52.css",
+    "main.js": "/xuest-react/static/js/main.b8c0b29a.js",
     "static/js/787.12f9fda6.chunk.js": "/xuest-react/static/js/787.12f9fda6.chunk.js",
     "index.html": "/xuest-react/index.html",
-    "main.fb4a9ba3.css.map": "/xuest-react/static/css/main.fb4a9ba3.css.map",
-    "main.7cd1d6c9.js.map": "/xuest-react/static/js/main.7cd1d6c9.js.map",
+    "main.02829c52.css.map": "/xuest-react/static/css/main.02829c52.css.map",
+    "main.b8c0b29a.js.map": "/xuest-react/static/js/main.b8c0b29a.js.map",
     "787.12f9fda6.chunk.js.map": "/xuest-react/static/js/787.12f9fda6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fb4a9ba3.css",
-    "static/js/main.7cd1d6c9.js"
+    "static/css/main.02829c52.css",
+    "static/js/main.b8c0b29a.js"
   ]
 }

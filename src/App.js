@@ -115,6 +115,8 @@ export default function Game() {
       setIsSetup(true);
       setHasWon(false);
     }
+
+    return true;
   }
 
   function updateViewport(row, col, nextCurrentLevel) {
